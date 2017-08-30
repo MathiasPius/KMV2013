@@ -2,7 +2,7 @@ import googlemaps;
 
 class Geocoder():
     def __init__(self):
-        with open("api_key.txt", "r") as file:
+        with open("google.apikey", "r") as file:
             self.__client = googlemaps.Client(key=file.read());
 
     def lookup(self, address):
