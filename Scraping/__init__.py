@@ -4,6 +4,7 @@ import io;
 import json;
 import requests;
 
+DATA_DIRECTORY = "../data/raw/";
 
 def get_all_municipalities(url = "http://www.kmdvalg.dk/kv/2013/"):
     page = requests.get(url);
@@ -49,6 +50,7 @@ def serialize(obj):
         }
     };
 
+    # If this is a municipality and not a location, serialize child locations as well
     if(isinstance(obj, MunicipalityResult)):
         locations = obj.get_locations();
         d['locations'] = [];
@@ -66,7 +68,7 @@ def download_all_municipalities():
         print("Serializing " + result.get_name());
         serialized = serialize(result);
 
-        json.dump(serialized, io.open("data/" + result.get_name().lower().replace(" ", "_") + ".json", "w"), indent = 4, ensure_ascii = False);
+        json.dump(serialized, io.open(DATA_DIRECTORY + result.get_name().lower().replace(" ", "_") + ".json", "w"), indent = 4, ensure_ascii = False);
         all.append(serialized);
 
 download_all_municipalities();

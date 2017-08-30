@@ -1,0 +1,986 @@
+{
+    "name": "Frederikssund Kommune",
+    "address": "Frederikssund Kommune",
+    "eligible_voters": 34497,
+    "counted_votes": 25322,
+    "votes": {
+        "other": {
+            "letter": "",
+            "name": "Øvrige stemmer fra forrige valg",
+            "votes": {
+                "count": 0,
+                "count_pct": 0.0,
+                "change": 0,
+                "change_pct": 0.0
+            }
+        },
+        "valid": {
+            "letter": "",
+            "name": "I alt gyldige stemmer",
+            "votes": {
+                "count": 24818,
+                "count_pct": 99.8,
+                "change": 8308,
+                "change_pct": 0
+            }
+        },
+        "blank": {
+            "letter": "",
+            "name": "Blanke stemmer",
+            "votes": {
+                "count": 378,
+                "count_pct": 0,
+                "change": 203,
+                "change_pct": 0
+            }
+        },
+        "invalid": {
+            "letter": "",
+            "name": "Ugyldige stemmer",
+            "votes": {
+                "count": 126,
+                "count_pct": 0,
+                "change": 61,
+                "change_pct": 0
+            }
+        },
+        "total": {
+            "letter": "",
+            "name": "I alt afgivne stemmer",
+            "votes": {
+                "count": 25322,
+                "count_pct": 0,
+                "change": 8572,
+                "change_pct": 0
+            }
+        },
+        "candidates": [
+            {
+                "letter": "A",
+                "name": "Socialdemokratiet",
+                "votes": {
+                    "count": 7130,
+                    "count_pct": 28.7,
+                    "change": 613,
+                    "change_pct": -10.8
+                }
+            },
+            {
+                "letter": "B",
+                "name": "Radikale Venstre",
+                "votes": {
+                    "count": 758,
+                    "count_pct": 3.0,
+                    "change": 375,
+                    "change_pct": 0.7
+                }
+            },
+            {
+                "letter": "C",
+                "name": "Det Konservative Folkeparti",
+                "votes": {
+                    "count": 1449,
+                    "count_pct": 5.8,
+                    "change": -889,
+                    "change_pct": -8.4
+                }
+            },
+            {
+                "letter": "E",
+                "name": "Borgernes liste Frederikssund",
+                "votes": {
+                    "count": 1339,
+                    "count_pct": 5.4,
+                    "change": 1339,
+                    "change_pct": 5.4
+                }
+            },
+            {
+                "letter": "F",
+                "name": "SF - Socialistisk Folkeparti",
+                "votes": {
+                    "count": 1168,
+                    "count_pct": 4.7,
+                    "change": -1202,
+                    "change_pct": -9.7
+                }
+            },
+            {
+                "letter": "I",
+                "name": "Liberal Alliance",
+                "votes": {
+                    "count": 653,
+                    "count_pct": 2.6,
+                    "change": 560,
+                    "change_pct": 2.0
+                }
+            },
+            {
+                "letter": "L",
+                "name": "Fjordlisten",
+                "votes": {
+                    "count": 54,
+                    "count_pct": 0.2,
+                    "change": 54,
+                    "change_pct": 0.2
+                }
+            },
+            {
+                "letter": "O",
+                "name": "Dansk Folkeparti",
+                "votes": {
+                    "count": 3459,
+                    "count_pct": 13.9,
+                    "change": 1797,
+                    "change_pct": 3.8
+                }
+            },
+            {
+                "letter": "V",
+                "name": "Venstre, Danmarks Liberale Parti",
+                "votes": {
+                    "count": 7539,
+                    "count_pct": 30.4,
+                    "change": 4392,
+                    "change_pct": 11.3
+                }
+            },
+            {
+                "letter": "Ø",
+                "name": "Enhedslisten - De Rød-Grønne",
+                "votes": {
+                    "count": 1269,
+                    "count_pct": 5.1,
+                    "change": 1269,
+                    "change_pct": 5.1
+                }
+            }
+        ]
+    },
+    "locations": [
+        {
+            "name": "Frederikssund Syd",
+            "address": "Frederikssundhallen Kalvøvej 13 3600 Frederikssund",
+            "eligible_voters": 8738,
+            "counted_votes": 6415,
+            "votes": {
+                "other": {
+                    "letter": "",
+                    "name": "Øvrige stemmer fra forrige valg",
+                    "votes": {
+                        "count": 0,
+                        "count_pct": 0.0,
+                        "change": 0,
+                        "change_pct": 0.0
+                    }
+                },
+                "valid": {
+                    "letter": "",
+                    "name": "I alt gyldige stemmer",
+                    "votes": {
+                        "count": 6295,
+                        "count_pct": 100.0,
+                        "change": 2952,
+                        "change_pct": 0
+                    }
+                },
+                "blank": {
+                    "letter": "",
+                    "name": "Blanke stemmer",
+                    "votes": {
+                        "count": 91,
+                        "count_pct": 0,
+                        "change": 47,
+                        "change_pct": 0
+                    }
+                },
+                "invalid": {
+                    "letter": "",
+                    "name": "Ugyldige stemmer",
+                    "votes": {
+                        "count": 29,
+                        "count_pct": 0,
+                        "change": 12,
+                        "change_pct": 0
+                    }
+                },
+                "total": {
+                    "letter": "",
+                    "name": "I alt afgivne stemmer",
+                    "votes": {
+                        "count": 6415,
+                        "count_pct": 0,
+                        "change": 3011,
+                        "change_pct": 0
+                    }
+                },
+                "candidates": [
+                    {
+                        "letter": "A",
+                        "name": "Socialdemokratiet",
+                        "votes": {
+                            "count": 1814,
+                            "count_pct": 28.8,
+                            "change": 547,
+                            "change_pct": -9.1
+                        }
+                    },
+                    {
+                        "letter": "B",
+                        "name": "Radikale Venstre",
+                        "votes": {
+                            "count": 220,
+                            "count_pct": 3.5,
+                            "change": 135,
+                            "change_pct": 1.0
+                        }
+                    },
+                    {
+                        "letter": "C",
+                        "name": "Det Konservative Folkeparti",
+                        "votes": {
+                            "count": 417,
+                            "count_pct": 6.6,
+                            "change": -74,
+                            "change_pct": -8.1
+                        }
+                    },
+                    {
+                        "letter": "E",
+                        "name": "Borgernes liste Frederikssund",
+                        "votes": {
+                            "count": 248,
+                            "count_pct": 3.9,
+                            "change": 248,
+                            "change_pct": 3.9
+                        }
+                    },
+                    {
+                        "letter": "F",
+                        "name": "SF - Socialistisk Folkeparti",
+                        "votes": {
+                            "count": 337,
+                            "count_pct": 5.4,
+                            "change": -212,
+                            "change_pct": -11.0
+                        }
+                    },
+                    {
+                        "letter": "I",
+                        "name": "Liberal Alliance",
+                        "votes": {
+                            "count": 193,
+                            "count_pct": 3.1,
+                            "change": 181,
+                            "change_pct": 2.7
+                        }
+                    },
+                    {
+                        "letter": "L",
+                        "name": "Fjordlisten",
+                        "votes": {
+                            "count": 10,
+                            "count_pct": 0.2,
+                            "change": 10,
+                            "change_pct": 0.2
+                        }
+                    },
+                    {
+                        "letter": "O",
+                        "name": "Dansk Folkeparti",
+                        "votes": {
+                            "count": 767,
+                            "count_pct": 12.2,
+                            "change": 447,
+                            "change_pct": 2.6
+                        }
+                    },
+                    {
+                        "letter": "V",
+                        "name": "Venstre, Danmarks Liberale Parti",
+                        "votes": {
+                            "count": 2035,
+                            "count_pct": 32.3,
+                            "change": 1416,
+                            "change_pct": 13.8
+                        }
+                    },
+                    {
+                        "letter": "Ø",
+                        "name": "Enhedslisten - De Rød-Grønne",
+                        "votes": {
+                            "count": 254,
+                            "count_pct": 4.0,
+                            "change": 254,
+                            "change_pct": 4.0
+                        }
+                    }
+                ]
+            },
+            "coordinate": {
+                "lat": 55.8306,
+                "lng": 12.0610065
+            }
+        },
+        {
+            "name": "Frederikssund Nord",
+            "address": "Græse Bakkebyskolen Højvang 8-10 3600 Frederikssund",
+            "eligible_voters": 6602,
+            "counted_votes": 4738,
+            "votes": {
+                "other": {
+                    "letter": "",
+                    "name": "Øvrige stemmer fra forrige valg",
+                    "votes": {
+                        "count": 0,
+                        "count_pct": 0.0,
+                        "change": 0,
+                        "change_pct": 0.0
+                    }
+                },
+                "valid": {
+                    "letter": "",
+                    "name": "I alt gyldige stemmer",
+                    "votes": {
+                        "count": 4637,
+                        "count_pct": 100.1,
+                        "change": 1385,
+                        "change_pct": 0
+                    }
+                },
+                "blank": {
+                    "letter": "",
+                    "name": "Blanke stemmer",
+                    "votes": {
+                        "count": 68,
+                        "count_pct": 0,
+                        "change": 30,
+                        "change_pct": 0
+                    }
+                },
+                "invalid": {
+                    "letter": "",
+                    "name": "Ugyldige stemmer",
+                    "votes": {
+                        "count": 33,
+                        "count_pct": 0,
+                        "change": 17,
+                        "change_pct": 0
+                    }
+                },
+                "total": {
+                    "letter": "",
+                    "name": "I alt afgivne stemmer",
+                    "votes": {
+                        "count": 4738,
+                        "count_pct": 0,
+                        "change": 1432,
+                        "change_pct": 0
+                    }
+                },
+                "candidates": [
+                    {
+                        "letter": "A",
+                        "name": "Socialdemokratiet",
+                        "votes": {
+                            "count": 1433,
+                            "count_pct": 30.9,
+                            "change": 393,
+                            "change_pct": -1.1
+                        }
+                    },
+                    {
+                        "letter": "B",
+                        "name": "Radikale Venstre",
+                        "votes": {
+                            "count": 194,
+                            "count_pct": 4.2,
+                            "change": 73,
+                            "change_pct": 0.5
+                        }
+                    },
+                    {
+                        "letter": "C",
+                        "name": "Det Konservative Folkeparti",
+                        "votes": {
+                            "count": 267,
+                            "count_pct": 5.8,
+                            "change": -268,
+                            "change_pct": -10.6
+                        }
+                    },
+                    {
+                        "letter": "E",
+                        "name": "Borgernes liste Frederikssund",
+                        "votes": {
+                            "count": 196,
+                            "count_pct": 4.2,
+                            "change": 196,
+                            "change_pct": 4.2
+                        }
+                    },
+                    {
+                        "letter": "F",
+                        "name": "SF - Socialistisk Folkeparti",
+                        "votes": {
+                            "count": 240,
+                            "count_pct": 5.2,
+                            "change": -256,
+                            "change_pct": -10.0
+                        }
+                    },
+                    {
+                        "letter": "I",
+                        "name": "Liberal Alliance",
+                        "votes": {
+                            "count": 129,
+                            "count_pct": 2.8,
+                            "change": 111,
+                            "change_pct": 2.2
+                        }
+                    },
+                    {
+                        "letter": "L",
+                        "name": "Fjordlisten",
+                        "votes": {
+                            "count": 6,
+                            "count_pct": 0.1,
+                            "change": 6,
+                            "change_pct": 0.1
+                        }
+                    },
+                    {
+                        "letter": "O",
+                        "name": "Dansk Folkeparti",
+                        "votes": {
+                            "count": 684,
+                            "count_pct": 14.8,
+                            "change": 353,
+                            "change_pct": 4.6
+                        }
+                    },
+                    {
+                        "letter": "V",
+                        "name": "Venstre, Danmarks Liberale Parti",
+                        "votes": {
+                            "count": 1255,
+                            "count_pct": 27.1,
+                            "change": 544,
+                            "change_pct": 5.2
+                        }
+                    },
+                    {
+                        "letter": "Ø",
+                        "name": "Enhedslisten - De Rød-Grønne",
+                        "votes": {
+                            "count": 233,
+                            "count_pct": 5.0,
+                            "change": 233,
+                            "change_pct": 5.0
+                        }
+                    }
+                ]
+            },
+            "coordinate": {
+                "lat": 55.8619046,
+                "lng": 12.0735445
+            }
+        },
+        {
+            "name": "Slangerup",
+            "address": "Slangerup Idræts- og Kulturcenter Idrætsvej 5 3550 Slangerup",
+            "eligible_voters": 6140,
+            "counted_votes": 4675,
+            "votes": {
+                "other": {
+                    "letter": "",
+                    "name": "Øvrige stemmer fra forrige valg",
+                    "votes": {
+                        "count": 0,
+                        "count_pct": 0.0,
+                        "change": 0,
+                        "change_pct": 0.0
+                    }
+                },
+                "valid": {
+                    "letter": "",
+                    "name": "I alt gyldige stemmer",
+                    "votes": {
+                        "count": 4585,
+                        "count_pct": 99.8,
+                        "change": 1465,
+                        "change_pct": 0
+                    }
+                },
+                "blank": {
+                    "letter": "",
+                    "name": "Blanke stemmer",
+                    "votes": {
+                        "count": 73,
+                        "count_pct": 0,
+                        "change": 37,
+                        "change_pct": 0
+                    }
+                },
+                "invalid": {
+                    "letter": "",
+                    "name": "Ugyldige stemmer",
+                    "votes": {
+                        "count": 17,
+                        "count_pct": 0,
+                        "change": 9,
+                        "change_pct": 0
+                    }
+                },
+                "total": {
+                    "letter": "",
+                    "name": "I alt afgivne stemmer",
+                    "votes": {
+                        "count": 4675,
+                        "count_pct": 0,
+                        "change": 1511,
+                        "change_pct": 0
+                    }
+                },
+                "candidates": [
+                    {
+                        "letter": "A",
+                        "name": "Socialdemokratiet",
+                        "votes": {
+                            "count": 1156,
+                            "count_pct": 25.2,
+                            "change": 13,
+                            "change_pct": -11.4
+                        }
+                    },
+                    {
+                        "letter": "B",
+                        "name": "Radikale Venstre",
+                        "votes": {
+                            "count": 144,
+                            "count_pct": 3.1,
+                            "change": 63,
+                            "change_pct": 0.5
+                        }
+                    },
+                    {
+                        "letter": "C",
+                        "name": "Det Konservative Folkeparti",
+                        "votes": {
+                            "count": 205,
+                            "count_pct": 4.5,
+                            "change": -398,
+                            "change_pct": -14.8
+                        }
+                    },
+                    {
+                        "letter": "E",
+                        "name": "Borgernes liste Frederikssund",
+                        "votes": {
+                            "count": 123,
+                            "count_pct": 2.7,
+                            "change": 123,
+                            "change_pct": 2.7
+                        }
+                    },
+                    {
+                        "letter": "F",
+                        "name": "SF - Socialistisk Folkeparti",
+                        "votes": {
+                            "count": 144,
+                            "count_pct": 3.1,
+                            "change": -279,
+                            "change_pct": -10.5
+                        }
+                    },
+                    {
+                        "letter": "I",
+                        "name": "Liberal Alliance",
+                        "votes": {
+                            "count": 153,
+                            "count_pct": 3.3,
+                            "change": 129,
+                            "change_pct": 2.5
+                        }
+                    },
+                    {
+                        "letter": "L",
+                        "name": "Fjordlisten",
+                        "votes": {
+                            "count": 9,
+                            "count_pct": 0.2,
+                            "change": 9,
+                            "change_pct": 0.2
+                        }
+                    },
+                    {
+                        "letter": "O",
+                        "name": "Dansk Folkeparti",
+                        "votes": {
+                            "count": 656,
+                            "count_pct": 14.3,
+                            "change": 376,
+                            "change_pct": 5.3
+                        }
+                    },
+                    {
+                        "letter": "V",
+                        "name": "Venstre, Danmarks Liberale Parti",
+                        "votes": {
+                            "count": 1800,
+                            "count_pct": 39.2,
+                            "change": 1234,
+                            "change_pct": 21.1
+                        }
+                    },
+                    {
+                        "letter": "Ø",
+                        "name": "Enhedslisten - De Rød-Grønne",
+                        "votes": {
+                            "count": 195,
+                            "count_pct": 4.2,
+                            "change": 195,
+                            "change_pct": 4.2
+                        }
+                    }
+                ]
+            },
+            "coordinate": {
+                "lat": 55.85086039999999,
+                "lng": 12.1643052
+            }
+        },
+        {
+            "name": "Skibby",
+            "address": "Skibby Idrætshal Hovedgaden 94 4050 Skibby",
+            "eligible_voters": 6625,
+            "counted_votes": 4838,
+            "votes": {
+                "other": {
+                    "letter": "",
+                    "name": "Øvrige stemmer fra forrige valg",
+                    "votes": {
+                        "count": 0,
+                        "count_pct": 0.0,
+                        "change": 0,
+                        "change_pct": 0.0
+                    }
+                },
+                "valid": {
+                    "letter": "",
+                    "name": "I alt gyldige stemmer",
+                    "votes": {
+                        "count": 4731,
+                        "count_pct": 100.0,
+                        "change": 1077,
+                        "change_pct": 0
+                    }
+                },
+                "blank": {
+                    "letter": "",
+                    "name": "Blanke stemmer",
+                    "votes": {
+                        "count": 83,
+                        "count_pct": 0,
+                        "change": 37,
+                        "change_pct": 0
+                    }
+                },
+                "invalid": {
+                    "letter": "",
+                    "name": "Ugyldige stemmer",
+                    "votes": {
+                        "count": 24,
+                        "count_pct": 0,
+                        "change": 13,
+                        "change_pct": 0
+                    }
+                },
+                "total": {
+                    "letter": "",
+                    "name": "I alt afgivne stemmer",
+                    "votes": {
+                        "count": 4838,
+                        "count_pct": 0,
+                        "change": 1127,
+                        "change_pct": 0
+                    }
+                },
+                "candidates": [
+                    {
+                        "letter": "A",
+                        "name": "Socialdemokratiet",
+                        "votes": {
+                            "count": 1357,
+                            "count_pct": 28.7,
+                            "change": -32,
+                            "change_pct": -9.3
+                        }
+                    },
+                    {
+                        "letter": "B",
+                        "name": "Radikale Venstre",
+                        "votes": {
+                            "count": 99,
+                            "count_pct": 2.1,
+                            "change": 47,
+                            "change_pct": 0.7
+                        }
+                    },
+                    {
+                        "letter": "C",
+                        "name": "Det Konservative Folkeparti",
+                        "votes": {
+                            "count": 265,
+                            "count_pct": 5.6,
+                            "change": -210,
+                            "change_pct": -7.4
+                        }
+                    },
+                    {
+                        "letter": "E",
+                        "name": "Borgernes liste Frederikssund",
+                        "votes": {
+                            "count": 250,
+                            "count_pct": 5.3,
+                            "change": 250,
+                            "change_pct": 5.3
+                        }
+                    },
+                    {
+                        "letter": "F",
+                        "name": "SF - Socialistisk Folkeparti",
+                        "votes": {
+                            "count": 236,
+                            "count_pct": 5.0,
+                            "change": -256,
+                            "change_pct": -8.5
+                        }
+                    },
+                    {
+                        "letter": "I",
+                        "name": "Liberal Alliance",
+                        "votes": {
+                            "count": 79,
+                            "count_pct": 1.7,
+                            "change": 69,
+                            "change_pct": 1.4
+                        }
+                    },
+                    {
+                        "letter": "L",
+                        "name": "Fjordlisten",
+                        "votes": {
+                            "count": 16,
+                            "count_pct": 0.3,
+                            "change": 16,
+                            "change_pct": 0.3
+                        }
+                    },
+                    {
+                        "letter": "O",
+                        "name": "Dansk Folkeparti",
+                        "votes": {
+                            "count": 649,
+                            "count_pct": 13.7,
+                            "change": 234,
+                            "change_pct": 2.3
+                        }
+                    },
+                    {
+                        "letter": "V",
+                        "name": "Venstre, Danmarks Liberale Parti",
+                        "votes": {
+                            "count": 1505,
+                            "count_pct": 31.8,
+                            "change": 684,
+                            "change_pct": 9.3
+                        }
+                    },
+                    {
+                        "letter": "Ø",
+                        "name": "Enhedslisten - De Rød-Grønne",
+                        "votes": {
+                            "count": 275,
+                            "count_pct": 5.8,
+                            "change": 275,
+                            "change_pct": 5.8
+                        }
+                    }
+                ]
+            },
+            "coordinate": {
+                "lat": 55.745181,
+                "lng": 11.953635
+            }
+        },
+        {
+            "name": "Jægerspris",
+            "address": "Kignæshallen Smedeengen 4 3630 Jægerspris",
+            "eligible_voters": 6392,
+            "counted_votes": 4656,
+            "votes": {
+                "other": {
+                    "letter": "",
+                    "name": "Øvrige stemmer fra forrige valg",
+                    "votes": {
+                        "count": 0,
+                        "count_pct": 0.0,
+                        "change": 0,
+                        "change_pct": 0.0
+                    }
+                },
+                "valid": {
+                    "letter": "",
+                    "name": "I alt gyldige stemmer",
+                    "votes": {
+                        "count": 4570,
+                        "count_pct": 99.9,
+                        "change": 1429,
+                        "change_pct": 0
+                    }
+                },
+                "blank": {
+                    "letter": "",
+                    "name": "Blanke stemmer",
+                    "votes": {
+                        "count": 63,
+                        "count_pct": 0,
+                        "change": 52,
+                        "change_pct": 0
+                    }
+                },
+                "invalid": {
+                    "letter": "",
+                    "name": "Ugyldige stemmer",
+                    "votes": {
+                        "count": 23,
+                        "count_pct": 0,
+                        "change": 10,
+                        "change_pct": 0
+                    }
+                },
+                "total": {
+                    "letter": "",
+                    "name": "I alt afgivne stemmer",
+                    "votes": {
+                        "count": 4656,
+                        "count_pct": 0,
+                        "change": 1491,
+                        "change_pct": 0
+                    }
+                },
+                "candidates": [
+                    {
+                        "letter": "A",
+                        "name": "Socialdemokratiet",
+                        "votes": {
+                            "count": 1370,
+                            "count_pct": 30.0,
+                            "change": -308,
+                            "change_pct": -23.4
+                        }
+                    },
+                    {
+                        "letter": "B",
+                        "name": "Radikale Venstre",
+                        "votes": {
+                            "count": 101,
+                            "count_pct": 2.2,
+                            "change": 57,
+                            "change_pct": 0.8
+                        }
+                    },
+                    {
+                        "letter": "C",
+                        "name": "Det Konservative Folkeparti",
+                        "votes": {
+                            "count": 295,
+                            "count_pct": 6.4,
+                            "change": 61,
+                            "change_pct": -1.0
+                        }
+                    },
+                    {
+                        "letter": "E",
+                        "name": "Borgernes liste Frederikssund",
+                        "votes": {
+                            "count": 522,
+                            "count_pct": 11.4,
+                            "change": 522,
+                            "change_pct": 11.4
+                        }
+                    },
+                    {
+                        "letter": "F",
+                        "name": "SF - Socialistisk Folkeparti",
+                        "votes": {
+                            "count": 211,
+                            "count_pct": 4.6,
+                            "change": -199,
+                            "change_pct": -8.4
+                        }
+                    },
+                    {
+                        "letter": "I",
+                        "name": "Liberal Alliance",
+                        "votes": {
+                            "count": 99,
+                            "count_pct": 2.2,
+                            "change": 70,
+                            "change_pct": 1.3
+                        }
+                    },
+                    {
+                        "letter": "L",
+                        "name": "Fjordlisten",
+                        "votes": {
+                            "count": 13,
+                            "count_pct": 0.3,
+                            "change": 13,
+                            "change_pct": 0.3
+                        }
+                    },
+                    {
+                        "letter": "O",
+                        "name": "Dansk Folkeparti",
+                        "votes": {
+                            "count": 703,
+                            "count_pct": 15.4,
+                            "change": 387,
+                            "change_pct": 5.3
+                        }
+                    },
+                    {
+                        "letter": "V",
+                        "name": "Venstre, Danmarks Liberale Parti",
+                        "votes": {
+                            "count": 944,
+                            "count_pct": 20.6,
+                            "change": 514,
+                            "change_pct": 6.9
+                        }
+                    },
+                    {
+                        "letter": "Ø",
+                        "name": "Enhedslisten - De Rød-Grønne",
+                        "votes": {
+                            "count": 312,
+                            "count_pct": 6.8,
+                            "change": 312,
+                            "change_pct": 6.8
+                        }
+                    }
+                ]
+            },
+            "coordinate": {
+                "lat": 55.8562439,
+                "lng": 12.0023366
+            }
+        }
+    ],
+    "coordinate": {
+        "lat": 55.820635,
+        "lng": 11.9821691
+    }
+}
