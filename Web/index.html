@@ -5,7 +5,8 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
-    <link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="main.css" />
 
 	<script type="text/javascript" src="https://d3js.org/d3.v3.min.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -14,218 +15,205 @@
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <script src="data.js"></script>
-
-	<style type="text/css">
-		html, body{
-			margin: 0px;
-			padding: 0px;
-		}
-		html, body, #map_canvas {
-			width: 100%;
-			height: 100%;
-		}
-
-		.SvgOverlay {
-			position: relative;
-			width: 900px;
-			height: 600px;
-		}
-
-		.SvgOverlay svg {
-			position: absolute;
-			top: -4000px;
-			left: -4000px;
-			width: 8000px;
-			height: 8000px;
-		}
-
-        polygon {
-            stroke-width: 2;
-            stroke: rgba(150, 150, 150, 0.5);
-            fill: transparent;
-        }
-
-        polygon:hover {
-            fill: rgba(1, 138, 60, 0.3);
-        }
-
-        #container {
-            position: relative;
-            width: 100%;
-            height: 100%;
-        }
-
-        #infobox {
-            width: 100%;
-            padding: 10px;
-        }
-
-        #controls {
-            display: inline-block;
-            border-left: 1px solid rgb(211, 211, 211);
-            position: absolute;
-            right: 0px;
-            top: 0px;
-            width: 400px;
-            height: 100%;
-            overflow-y: scroll;
-            overflow-x:hidden;
-            background-color: white;
-        }
-       
-        #candidate-table {
-            font-size: 10pt;
-        }
-
-        .party-letter {
-            background-color: rgb(191, 191, 191);
-            width: 36px;
-            text-align: center;
-            font-size: 12pt;
-            font-weight: bold;
-            color: #e5e5e5;
-        }
-
-        .party-letter-Ø {
-            background-color: rgba(208, 0, 77, 0.8);
-        }
-
-        .party-letter-I {
-            background-color: rgba(27, 36, 65, 0.8);
-        }
-
-        .party-letter-A {
-            background-color: rgba(193, 11, 32, 0.8);
-        }
-
-        .party-letter-F {
-            background-color: rgba(1, 138, 60, 0.8);
-        }
-
-        .party-letter-V {
-            background-color: rgba(0, 0, 128, 0.8);
-        }
-
-        .party-letter-C {
-            background-color: rgba(3, 69, 54, 0.8);
-        }
-
-        .party-letter-B {
-            background-color: rgba(205, 0, 130, 0.8);
-        }
-
-        .party-letter-O {
-            background-color: rgb(0, 0, 205);
-        }
-	</style>
 </head>
 
 <body>
     <div id="container">
-        <div id="map_canvas"></div>
-        <div id="controls">
-            <div id="infobox">
-                <h3 id="municipality-name"></h3>
-                <h4 id="location-name"></h4>
+        <div id="map-canvas"></div>
+        <div id="main-controls">
 
-                <hr />
+            <div class="tab-content">
+                <div id="location-overlay-display" class="tab-pane overlay-controls active">
+                    <div id="location-overlay-hint">
+                        <h4>Klik på et valgsted for at hente data</h4>
+                    </div>
+                    <div id="location-overlay-data" style="display: none">
+                        <div id="location-overlay-infobox">
+                            <h3 id="municipality-name"></h3>
+                            <h4 id="location-name"></h4>
+                            <hr />
 
-                <p>
-                    <h4>Valgdeltagelse</h4>
-                    <small><b><span id="voting-percentage" style="width: 36px;">0%</span></b> af <b><span id="eligible-voters">0</span></b> stemmeberettigede</small>
-                </p>
+                            <p>
+                                <h4>Valgdeltagelse</h4>
+                                <small><b><span id="voting-percentage" style="width: 36px;">0%</span></b> af <b><span id="eligible-voters">0</span></b> stemmeberettigede</small>
+                            </p>
 
-                <div>
-                    <span class="progress" style="width: 100%;">
-                        <span id="counted-votes" class="progress-bar progress-bar-success" role="progressbar" style="width: 30%"></span>
-                        <span id="missing-votes" class="progress-bar progress-bar-warning" role="progressbar" style="width: 30%"></span>
-                    </span>
+                            <div>
+                                <span class="progress" style="width: 100%;">
+                                    <span id="counted-votes" class="progress-bar progress-bar-success" role="progressbar" style="width: 30%"></span>
+                                    <span id="missing-votes" class="progress-bar progress-bar-warning" role="progressbar" style="width: 30%"></span>
+                                </span>
+                            </div>
+
+                        </div>
+                        <table id="candidate-table" class="table">
+                            <thead id="candidate-header">
+                                <tr>
+                                    <td style="width: 30px;"></td>
+                                    <td><strong>Navn</strong></td>
+                                    <td><strong>Stemmer</strong></td>
+                                    <td><strong>Andel</strong></td>
+                                </tr>
+                            </thead>
+                            <tbody id="candidate-list">
+                                <!--- Data goes here -->
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
 
+                <div id="municipality-overlay-display" class="tab-pane overlay-controls">
+                    <div id="municipality-overlay-hint">
+
+                    </div>
+
+                    <div id="municipality-overlay-data">
+
+                    </div>
+                </div>
             </div>
-            <table id="candidate-table" class="table">
-                <thead id="candidate-header">
-                    <tr>
-                        <td style="width: 30px;"></td>
-                        <td><strong>Navn</strong></td>
-                        <td><strong>Stemmer</strong></td>
-                        <td><strong>Andel</strong></td>
-                    </tr>
-                </thead>
-                <tbody id="candidate-list">
-                    <!--- Data goes here -->
-                </tbody>
-            </table>
         </div>
     </div>
 
 	<script type="text/javascript">
-        var pointdata = [];
-        electionData.forEach(function (municipality, mindex) {
-            municipality.locations.forEach(function (location, lindex) {
-                location.votes.candidates.sort(function (a, b) {
+      
+        var municipal_data = [
+            geometry_municipalities,
+            electiondata_municipalities
+        ];
 
-                    if (a.votes.count > b.votes.count) { return -1; }
-                    if (a.votes.count < b.votes.count) { return 1; }  
-                
-                    return 0;
-                });
+        var location_data = [
+            geometry_locations,
+            electiondata_locations
+        ]
 
-                pointdata.push({
-                    "type": "Feature",
-                    "id": [mindex, lindex],
-                    "name": location.name,
-                    "properties": {},
-                    "geometry": {
-                        "type": "Point",
-                        "coordinates": [location.position.lat, location.position.lng]
-                    }
+        var dataSource = municipal_data;
+
+        function main() {
+            // Rough bounds of Denmark
+		    var bounds = new google.maps.LatLngBounds(
+			    new google.maps.LatLng(54.534223, 7.816973),
+			    new google.maps.LatLng(57.882655, 15.479440)
+		    )
+		
+		    var map = new google.maps.Map(document.getElementById('map-canvas'), {
+			    zoom: 7,
+			    mapTypeId: google.maps.MapTypeId.ROADMAP,
+			    center: bounds.getCenter()
+            });
+
+            var locationOverlay = new google.maps.OverlayView();
+
+            var groups = [];
+            dataSource[0].forEach(function (region) {
+                var group = {}
+                group.shapes = []
+                group.name = region[0];
+
+                region[1].forEach(function (subregion) {
+                    var polyPoints = [];
+                    subregion.forEach(function (point) {
+                        polyPoints.push(point);
+                    })
+                    group.shapes.push(polyPoints);
                 })
-            })
-        })
+
+                groups.push(group);
+            });
+
+            locationOverlay.onAdd = function () {
+                var layer = d3.select(this.getPanes().overlayMouseTarget).append("div").attr("class", "svg-overlay");
+                var svg = layer.append("svg");
+                var svgoverlay = svg.append("g");
+
+                svgoverlay.attr("transform", "translate(4000, 4000)");
+
+                locationOverlay.draw = function () {
+
+                    var markerOverlay = this;
+                    var overlayProjection = markerOverlay.getProjection();
+
+                    var googleMapProjection = function (coordinates) {
+                        var googleCoordinates = new google.maps.LatLng(coordinates[0], coordinates[1]);
+                        var pixelCoordinates = overlayProjection.fromLatLngToDivPixel(googleCoordinates);
+                        return [pixelCoordinates.x, pixelCoordinates.y];
+                    }
+
+                    var nested = svgoverlay
+                        .selectAll("g")
+                        .data(groups)
+
+                    nested.enter()
+                        .append('g')
+
+                    var regions = nested.selectAll("polygon")
+                        .data(d => d.shapes)
+                            .attr("points", function (d) {
+                                return d.map(function (p) {
+                                    return googleMapProjection(p).join(",");
+                                }).join(" ")
+                            })
+                            .enter()
+                            .append("polygon")
+                            .attr("points", function (d) {
+                                return d.map(function (p) {
+                                    return googleMapProjection(p).join(",");
+                                }).join(" ")
+                        });
+
+                    nested
+                        .on("click", function (d, i) { selectLocation(d.name); })
+                        .enter()
+                        .append('g')
+                };
+
+            };
+
+            locationOverlay.setMap(map);
+        };
 
         main();
 
-        function selectLocation(mid, lid)
-        {
-            mnc = electionData[mid];
-            loc = mnc.locations[lid];
+        function selectLocation(i) {
+            console.log("Selected location " + i);
+            $("#location-overlay-hint").hide();
+            $("#location-overlay-data").show();
 
-            $("#municipality-name").text(mnc.name);
-            $("#location-name").text(loc.name);
+            data = dataSource[1][i];
+
+            $("#municipality-name").text(data[0]);
+            $("#location-name").text(data[1]);
 
             $("#candidate-list tr").remove();
 
-            var pct = Math.round(loc.counted_votes / loc.eligible_voters * 100);
+            var pct = Math.round(data[2][1] / data[2][0] * 100);
             $("#counted-votes")
-                .text(loc.counted_votes)
+                .text(data[2][1])
                 .width(pct + "%");
 
             $("#missing-votes")
-                .text(loc.eligible_voters - loc.counted_votes)
+                .text(data[2][0] - data[2][1])
                 .width((100 - pct) + "%");
 
             $("#voting-percentage").text(pct + "%");
-            $("#eligible-voters").text(loc.eligible_voters);
+            $("#eligible-voters").text(data[2][0]);
 
-
-            loc.votes.candidates.forEach(function(candidate)
-            {
+            data[3].forEach(function (candidate) {
                 var row = document.createElement("tr")
 
                 var letter = document.createElement("td");
-                letter.appendChild(document.createTextNode(candidate.letter));
-                letter.className += (" party-letter-" + candidate.letter);
+                letter.appendChild(document.createTextNode(candidate[0]));
+                letter.className += (" party-letter-" + candidate[0]);
                 letter.className += (" party-letter");
 
                 var name = document.createElement("td");
-                name.appendChild(document.createTextNode(candidate.name));
+                name.appendChild(document.createTextNode(candidate[1]));
 
                 var votes = document.createElement("td");
-                votes.appendChild(document.createTextNode(candidate.votes.count));
+                votes.appendChild(document.createTextNode(candidate[2]));
 
                 var voteshare = document.createElement("td");
-                voteshare.appendChild(document.createTextNode(candidate.votes.count_pct + "%"));
+                voteshare.appendChild(document.createTextNode(candidate[3] + "%"));
 
                 row.appendChild(letter);
                 row.appendChild(name);
@@ -235,112 +223,6 @@
                 $("#candidate-list").append(row);
             })
         }
-
-        function main() {
-            // Rough bounds of Denmark
-		    var bounds = new google.maps.LatLngBounds(
-			    new google.maps.LatLng(54.534223, 7.816973),
-			    new google.maps.LatLng(57.882655, 15.479440)
-		    )
-		
-		    var map = new google.maps.Map(document.getElementById('map_canvas'), {
-			    zoom: 7,
-			    mapTypeId: google.maps.MapTypeId.ROADMAP,
-			    center: bounds.getCenter()
-		    });
-
-			
-		    var overlay = new google.maps.OverlayView();
-		
-
-		    overlay.onAdd = function () {
-                var layer = d3.select(this.getPanes().overlayMouseTarget).append("div").attr("class", "SvgOverlay");
-			    var svg = layer.append("svg");
-                var svgoverlay = svg.append("g").attr("class", "AdminDivisions");
-
-                overlay.draw = function () {
-
-				    var markerOverlay = this;
-				    var overlayProjection = markerOverlay.getProjection();
-		
-				    var googleMapProjection = function (coordinates) {
-                        var googleCoordinates = new google.maps.LatLng(coordinates[0], coordinates[1]);
-					    var pixelCoordinates = overlayProjection.fromLatLngToDivPixel(googleCoordinates);
-					    return [pixelCoordinates.x + 4000, pixelCoordinates.y + 4000];
-				    }
-
-				    var positions = [];
-			
-				    pointdata.forEach(function(d) {		
-					    positions.push(googleMapProjection(d.geometry.coordinates));
-				    });
-
-				    var polygons = d3.geom.voronoi(positions);
-
-                    svgoverlay.selectAll("polygon")
-                        .data(polygons)
-                        .attr("points", function (d) {
-                            if (!d) { return; }
-                            return d.map(function (p) {
-                                return p.join(",");
-                            }).join(" ")
-                        })
-                        .on("click", function (d, i) { selectLocation(pointdata[i].id[0], pointdata[i].id[1]);  })
-                        .enter().append("polygon")
-
-                    /*
-                    svgoverlay.selectAll("path")
-                        .data(pointdata)
-                        .attr(pathAttr)
-                        .enter()
-                        .append("svg:path")
-                        .attr("class", "cell")
-                        .attr(pathAttr);
-                    
-
-                    if ($("#toggleLocationName").is(':checked')) {
-
-                        var textAttr = {
-                            "x": function (d, i) { return positions[i][0]; },
-                            "y": function (d, i) { return positions[i][1]; },
-                        }
-
-                        svgoverlay.selectAll("text")
-                            .data(pointdata)
-                            .attr(textAttr)
-                            .enter()
-                            .append("text")
-                            .text(function (d) { return d.name; })
-                            .attr("font-family", "sans-serif")
-                            .attr("font-size", "10px")
-                            .attr("fill", "black");
-                    }
-                    else
-                    {
-
-                    }
-                    
-				    var circleAttr = {
-						    "cx":function(d, i) { return positions[i][0]; },
-						    "cy":function(d, i) { return positions[i][1]; },
-						    "r":2,
-						    fill:"red"			
-				    }
-		
-				    svgoverlay.selectAll("circle")
-					    .data(pointdata)
-					    .attr(circleAttr)
-					    .enter()
-					    .append("svg:circle")
-					    .attr(circleAttr)
-		            */
-			    };
-
-		    };
-
-            overlay.setMap(map);
-            google.maps.event.trigger(map, 'resize')
-	    };
 	</script>
 </body>
 </html>

@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>ff017af5-8342-465c-87b0-ef837f888a38</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Geocoding.py</StartupFile>
+    <StartupFile>ExtractBoundaries.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -21,10 +21,21 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Compile.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ElectionData.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ExtractBoundaries.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Geocoding.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Processing.py" />
+    <Compile Include="LocationPolygons.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

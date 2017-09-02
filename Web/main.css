@@ -1,22 +1,102 @@
-html, body{
+hhtml, body {
     margin: 0px;
     padding: 0px;
 }
-html, body, #map_canvas {
-	width: 100%;
-	height: 100%;
+
+html, body, #map-canvas {
+    width: 100%;
+    height: 100%;
 }
 
-.SvgOverlay {
-	position: relative;
-	width: 900px;
-	height: 600px;           
+.svg-overlay {
+    position: relative;
+    width: 900px;
+    height: 600px;
 }
 
-.SvgOverlay svg {
-	position: absolute;
-	top: -4000px;
-	left: -4000px;
-	width: 8000px;
-	height: 8000px;        
+.svg-overlay svg {
+    position: absolute;
+    left: -4000px;
+    top:  -4000px;
+    width: 8000px;
+    height: 8000px;
+}
+
+g {
+    stroke-width: 2;
+    stroke: rgba(150, 150, 150, 0.5);
+    fill: transparent;
+}
+
+g:hover {
+    fill: rgba(1, 138, 60, 0.3);
+}
+
+#container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+#location-overlay-data, #location-overlay-hint {
+    width: 100%;
+    padding: 10px;
+}
+
+#main-controls {
+    display: inline-block;
+    border-left: 1px solid rgb(211, 211, 211);
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    width: 450px;
+    height: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    background-color: white;
+}
+
+#candidate-table {
+    font-size: 10pt;
+}
+
+.party-letter {
+    background-color: rgb(191, 191, 191);
+    width: 36px;
+    text-align: center;
+    font-size: 12pt;
+    font-weight: bold;
+    color: #e5e5e5;
+}
+
+.party-letter-Ø {
+    background-color: rgba(208, 0, 77, 0.8);
+}
+
+.party-letter-I {
+    background-color: rgba(27, 36, 65, 0.8);
+}
+
+.party-letter-A {
+    background-color: rgba(193, 11, 32, 0.8);
+}
+
+.party-letter-F {
+    background-color: rgba(1, 138, 60, 0.8);
+}
+
+.party-letter-V {
+    background-color: rgba(0, 0, 128, 0.8);
+}
+
+.party-letter-C {
+    background-color: rgba(3, 69, 54, 0.8);
+}
+
+.party-letter-B {
+    background-color: rgba(205, 0, 130, 0.8);
+}
+
+.party-letter-O {
+    background-color: rgb(0, 0, 205);
 }
