@@ -1,63 +1,65 @@
-hhtml, body {
-    margin: 0px;
-    padding: 0px;
-}
-
-html, body, #map-canvas {
+html, body {
     width: 100%;
     height: 100%;
-}
-
-.svg-overlay {
-    position: relative;
-    width: 900px;
-    height: 600px;
-}
-
-.svg-overlay svg {
-    position: absolute;
-    left: -4000px;
-    top:  -4000px;
-    width: 8000px;
-    height: 8000px;
-}
-
-g {
-    stroke-width: 2;
-    stroke: rgba(150, 150, 150, 0.5);
-    fill: transparent;
-}
-
-g:hover {
-    fill: rgba(1, 138, 60, 0.3);
+    padding: 0px;
+    margin: 0px;
+    overflow: hidden;
 }
 
 #container {
+    overflow: hidden;
     position: relative;
     width: 100%;
     height: 100%;
 }
 
-#location-overlay-data, #location-overlay-hint {
+
+/* Map styling */
+
+#map {
     width: 100%;
-    padding: 10px;
+    height: 100%;
 }
 
-#main-controls {
+.municipality-feature {
+    stroke-width: 1px;
+    fill: transparent;
+}
+
+.municipality-feature:hover {
+    fill: rgba(1, 138, 60, 0.3);
+}
+
+/* Info box styling */
+
+#info-display {
     display: inline-block;
-    border-left: 1px solid rgb(211, 211, 211);
     position: absolute;
     right: 0px;
     top: 0px;
-    width: 450px;
+    width: 0px;
     height: 100%;
+    z-index: 1000;
+    transition: 0.1s;
+    
+    border-left: 1px solid rgb(211, 211, 211);
+    background-color: white;
+    padding: 10px;
     overflow-y: scroll;
     overflow-x: hidden;
-    background-color: white;
+    visibility: hidden;
 }
 
-#candidate-table {
-    font-size: 10pt;
+#info-display > h1, h2, h3, h4 {
+    margin: 0px 0px 10px 0px;
+}
+
+.info-pie-chart-container {
+    text-align: center;
+    margin-left: auto;
+    
+    display: inline-block;
+    width: 200px;
 }
 
 .party-letter {
@@ -67,36 +69,4 @@ g:hover {
     font-size: 12pt;
     font-weight: bold;
     color: #e5e5e5;
-}
-
-.party-letter-Ø {
-    background-color: rgba(208, 0, 77, 0.8);
-}
-
-.party-letter-I {
-    background-color: rgba(27, 36, 65, 0.8);
-}
-
-.party-letter-A {
-    background-color: rgba(193, 11, 32, 0.8);
-}
-
-.party-letter-F {
-    background-color: rgba(1, 138, 60, 0.8);
-}
-
-.party-letter-V {
-    background-color: rgba(0, 0, 128, 0.8);
-}
-
-.party-letter-C {
-    background-color: rgba(3, 69, 54, 0.8);
-}
-
-.party-letter-B {
-    background-color: rgba(205, 0, 130, 0.8);
-}
-
-.party-letter-O {
-    background-color: rgb(0, 0, 205);
 }

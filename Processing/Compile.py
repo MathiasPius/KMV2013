@@ -18,7 +18,7 @@ def compile_data():
     ];
 
     with codecs.open(OUTPUT_DIRECTORY + "data.js", "w", "utf-8") as out:
-        out.write("// This file was compiled from election data processed elsewhere in the project\n");
+        out.write(u"// This file was compiled from election data processed elsewhere in the project\n");
 
         for mapping in datamap:
             out.write("var {} = ".format(mapping[1]));

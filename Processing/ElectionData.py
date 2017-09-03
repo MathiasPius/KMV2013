@@ -23,8 +23,10 @@ def serialize(obj):
         obj["name"],
         obj["parent"],
         [
-            obj["eligible_voters"], 
-            obj["counted_votes"]
+            obj["eligible_voters"] - obj["counted_votes"], 
+            obj["votes"]["blank"]["votes"]["count"],
+            obj["votes"]["valid"]["votes"]["count"],
+            obj["votes"]["invalid"]["votes"]["count"],
         ],
         serialize_candidates(obj["votes"]["candidates"])
     ];

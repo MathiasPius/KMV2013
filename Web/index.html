@@ -1,210 +1,175 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
-	<title>Kommunalvalg 2013</title>
+   
+    <title>Kommunalvalg 2013</title>
 
+    <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
-    <link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
-    <link rel="stylesheet" type="text/css" href="main.css" />
+    <!--<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
 
-	<script type="text/javascript" src="https://d3js.org/d3.v3.min.js"></script>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJApA5cYCBclbRC2zvqw3woNmjedbxoY4"></script>
-    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Chartjs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.min.js" integrity="sha256-VNbX9NjQNRW+Bk02G/RO6WiTKuhncWI4Ey7LkSbE+5s=" crossorigin="anonymous"></script>
 
-    <script src="data.js"></script>
+    <!-- Leafletjs -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ==" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js" integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log==" crossorigin=""></script>
+
+    <!-- Custom content -->
+    <script src="data.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" href="main.css" />
 </head>
 
 <body>
     <div id="container">
-        <div id="map-canvas"></div>
-        <div id="main-controls">
-
-            <div class="tab-content">
-                <div id="location-overlay-display" class="tab-pane overlay-controls active">
-                    <div id="location-overlay-hint">
-                        <h4>Klik på et valgsted for at hente data</h4>
-                    </div>
-                    <div id="location-overlay-data" style="display: none">
-                        <div id="location-overlay-infobox">
-                            <h3 id="municipality-name"></h3>
-                            <h4 id="location-name"></h4>
-                            <hr />
-
-                            <p>
-                                <h4>Valgdeltagelse</h4>
-                                <small><b><span id="voting-percentage" style="width: 36px;">0%</span></b> af <b><span id="eligible-voters">0</span></b> stemmeberettigede</small>
-                            </p>
-
-                            <div>
-                                <span class="progress" style="width: 100%;">
-                                    <span id="counted-votes" class="progress-bar progress-bar-success" role="progressbar" style="width: 30%"></span>
-                                    <span id="missing-votes" class="progress-bar progress-bar-warning" role="progressbar" style="width: 30%"></span>
-                                </span>
-                            </div>
-
-                        </div>
-                        <table id="candidate-table" class="table">
-                            <thead id="candidate-header">
-                                <tr>
-                                    <td style="width: 30px;"></td>
-                                    <td><strong>Navn</strong></td>
-                                    <td><strong>Stemmer</strong></td>
-                                    <td><strong>Andel</strong></td>
-                                </tr>
-                            </thead>
-                            <tbody id="candidate-list">
-                                <!--- Data goes here -->
-                            </tbody>
-                        </table>
-                    </div>
+        <div id="info-display">
+            <h2 id="info-municipality-name"></h2>
+            <hr />
+            <div>
+                <div class="info-pie-chart-container">
+                    <h4>Valgdeltagelse</h4>
+                    <div><canvas class="info-pie-chart" id="info-election-participation"></canvas></div>
                 </div>
-
-                <div id="municipality-overlay-display" class="tab-pane overlay-controls">
-                    <div id="municipality-overlay-hint">
-
-                    </div>
-
-                    <div id="municipality-overlay-data">
-
-                    </div>
+                <div class="info-pie-chart-container">
+                    <h4>Stemmefordeling</h4>
+                    <div><canvas class="info-pie-chart" id="info-vote-distribution"></canvas></div>
                 </div>
             </div>
+            <hr />
+            <div>
+                <h3>Kandidater</h3>
+                <table id="info-candidate-table" class="table">
+                    <thead id="info-candidate-header">
+                        <tr>
+                            <td style="width: 30px;"></td>
+                            <td><strong>Navn</strong></td>
+                            <td><strong>Stemmer</strong></td>
+                            <td><strong>Andel</strong></td>
+                        </tr>
+                    </thead>
+                    <tbody id="info-candidate-data">
+                        <!--- Data goes here -->
+                    </tbody>
+                </table>
+            </div>
         </div>
+        <div id="map"></div>
     </div>
 
-	<script type="text/javascript">
-      
-        var municipal_data = [
-            geometry_municipalities,
-            electiondata_municipalities
-        ];
+    <script>
+        var partyColors = {
+            �: "rgba(208, 0, 77, 0.8)",
+            I: "rgba(27, 36, 65, 0.8)",
+            A: "rgba(193, 11, 32, 0.8)",
+            F: "rgba(1, 138, 60, 0.8)",
+            V: "rgba(0, 0, 128, 0.8)",
+            C: "rgba(3, 69, 54, 0.8)",
+            B: "rgba(205, 0, 130, 0.8)",
+            O: "rgba(0, 0, 205, 0.8)",
+            default: "rgba(0, 0, 0, 0.6)"
+        };
+        
+        function $(id) {
+            return document.getElementById(id);
+        }
 
-        var location_data = [
-            geometry_locations,
-            electiondata_locations
-        ]
+        function hideDisplay(e) {
+            // If a municipality was clicked, .handled will be true
+            // so we ignore it
+            if (e.originalEvent.handled) { return; }
+            
+            $("info-display").style.width = "0px";
+            $("info-display").style.visibility = "hidden";
+        }
 
-        var dataSource = municipal_data;
+        function makePieChart(canvas, data) {
+            var ctx = canvas.getContext("2d");
 
-        function main() {
-            // Rough bounds of Denmark
-		    var bounds = new google.maps.LatLngBounds(
-			    new google.maps.LatLng(54.534223, 7.816973),
-			    new google.maps.LatLng(57.882655, 15.479440)
-		    )
-		
-		    var map = new google.maps.Map(document.getElementById('map-canvas'), {
-			    zoom: 7,
-			    mapTypeId: google.maps.MapTypeId.ROADMAP,
-			    center: bounds.getCenter()
-            });
-
-            var locationOverlay = new google.maps.OverlayView();
-
-            var groups = [];
-            dataSource[0].forEach(function (region) {
-                var group = {}
-                group.shapes = []
-                group.name = region[0];
-
-                region[1].forEach(function (subregion) {
-                    var polyPoints = [];
-                    subregion.forEach(function (point) {
-                        polyPoints.push(point);
-                    })
-                    group.shapes.push(polyPoints);
-                })
-
-                groups.push(group);
-            });
-
-            locationOverlay.onAdd = function () {
-                var layer = d3.select(this.getPanes().overlayMouseTarget).append("div").attr("class", "svg-overlay");
-                var svg = layer.append("svg");
-                var svgoverlay = svg.append("g");
-
-                svgoverlay.attr("transform", "translate(4000, 4000)");
-
-                locationOverlay.draw = function () {
-
-                    var markerOverlay = this;
-                    var overlayProjection = markerOverlay.getProjection();
-
-                    var googleMapProjection = function (coordinates) {
-                        var googleCoordinates = new google.maps.LatLng(coordinates[0], coordinates[1]);
-                        var pixelCoordinates = overlayProjection.fromLatLngToDivPixel(googleCoordinates);
-                        return [pixelCoordinates.x, pixelCoordinates.y];
-                    }
-
-                    var nested = svgoverlay
-                        .selectAll("g")
-                        .data(groups)
-
-                    nested.enter()
-                        .append('g')
-
-                    var regions = nested.selectAll("polygon")
-                        .data(d => d.shapes)
-                            .attr("points", function (d) {
-                                return d.map(function (p) {
-                                    return googleMapProjection(p).join(",");
-                                }).join(" ")
-                            })
-                            .enter()
-                            .append("polygon")
-                            .attr("points", function (d) {
-                                return d.map(function (p) {
-                                    return googleMapProjection(p).join(",");
-                                }).join(" ")
-                        });
-
-                    nested
-                        .on("click", function (d, i) { selectLocation(d.name); })
-                        .enter()
-                        .append('g')
-                };
-
+            var dataset = {
+                colors: [],
+                labels: [],
+                data: []
             };
 
-            locationOverlay.setMap(map);
-        };
+            data.forEach(function (datum) {
+                dataset.labels.push(datum[0])
+                dataset.data.push(datum[1])
+                dataset.colors.push(datum[2])
+            })
 
-        main();
+            return new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    datasets: [{
+                        backgroundColor: dataset.colors,
+                        data: dataset.data
+                    }],
 
-        function selectLocation(i) {
-            console.log("Selected location " + i);
-            $("#location-overlay-hint").hide();
-            $("#location-overlay-data").show();
+                    labels: dataset.labels
+                },
+                options: {
+                    legend: {
+                        display: false
+                    }
+                }
+            });
+        }
 
-            data = dataSource[1][i];
+        var participationChart;
+        var distributionChart;
+        function selectMunicipality(e) {
+            //console.log("Selected " + e.target.feature.properties.name);
+            var mId = e.target.feature.properties.name;
+            var data = electiondata_municipalities[mId];
 
-            $("#municipality-name").text(data[0]);
-            $("#location-name").text(data[1]);
+            console.log(data);
+            $("info-municipality-name").innerText = mId;
 
-            $("#candidate-list tr").remove();
 
-            var pct = Math.round(data[2][1] / data[2][0] * 100);
-            $("#counted-votes")
-                .text(data[2][1])
-                .width(pct + "%");
+            // Build election piecharts
+            var participation = [
+                ["Ej afgivet", data[2][0], "rgba(0, 0, 0, 0.6)"],
+                ["Blanke", data[2][1], "rgba(0, 0, 200, 0.6)"],
+                ["Gyldige", data[2][2], "rgba(0, 200, 0, 0.6)"]
+            ]
 
-            $("#missing-votes")
-                .text(data[2][0] - data[2][1])
-                .width((100 - pct) + "%");
+            if (participationChart) { participationChart.destroy(); }
+            participationChart = makePieChart($("info-election-participation"), participation);
 
-            $("#voting-percentage").text(pct + "%");
-            $("#eligible-voters").text(data[2][0]);
+            var distribution = [
+                ["Andre", 0, partyColors.default]
+            ];
+
+            data[3].forEach(function (party) {
+                if (partyColors[party[0]]) {
+                    distribution.push([party[0], party[2], partyColors[party[0]]]);
+                } else {
+                    distribution[0][1] += party[2]
+                }
+            })
+
+
+            if (distributionChart) { distributionChart.destroy(); }
+            distributionChart = makePieChart($("info-vote-distribution"), distribution);
+
+
+            // Detailed candidate list
+            while ($("info-candidate-data").hasChildNodes()) {
+                $("info-candidate-data").removeChild($("info-candidate-data").lastChild);
+            }
 
             data[3].forEach(function (candidate) {
                 var row = document.createElement("tr")
+                row.className += "info-candidate-row"
 
                 var letter = document.createElement("td");
                 letter.appendChild(document.createTextNode(candidate[0]));
-                letter.className += (" party-letter-" + candidate[0]);
-                letter.className += (" party-letter");
+                letter.className = "party-letter";
+                if (partyColors[candidate[0]]) {
+                    letter.style.backgroundColor = partyColors[candidate[0]];
+                } else {
+                    letter.style.backgroundColor = partyColors.default;
+                }
 
                 var name = document.createElement("td");
                 name.appendChild(document.createTextNode(candidate[1]));
@@ -220,9 +185,54 @@
                 row.appendChild(votes);
                 row.appendChild(voteshare);
 
-                $("#candidate-list").append(row);
+                $("info-candidate-data").append(row);
             })
+
+
+            // Extend the menu if it isn't already
+            $("info-display").style.width = "450px";
+            $("info-display").style.visibility = "visible";
+
+            // Set .handled to true to prevent us from acting on the event later
+            e.originalEvent.handled = true;
         }
-	</script>
+
+        function initMap() {
+            var bounds = new L.LatLngBounds(
+                new L.LatLng(50.534223, -1.816973),
+                new L.LatLng(60.882655, 22.479440)
+            )
+
+            var map = L.map('map', {
+                center: bounds.getCenter(),
+                zoom: 7,
+                minZoom: 7,
+                maxBounds: bounds,
+                maxBoundsViscosity: 0.01
+            });
+
+            L.tileLayer('http://{s}.tile.thunderforest.com/neighbourhood/{z}/{x}/{y}.png?apikey={apikey}', {
+                attribution: '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+                apikey: '9c66b81c1cea4675ac7708ad71498ba9',
+                maxZoom: 22
+            }).addTo(map);
+
+            map.on({click: hideDisplay })
+
+            L.geoJSON(geometry_municipalities, {
+
+                className: "municipality-feature",
+
+                onEachFeature: function (feature, layer) {
+                    layer.on({
+                        click: selectMunicipality
+                    })
+                }
+            }).addTo(map);
+        }
+
+        initMap();
+    </script>
 </body>
+
 </html>
