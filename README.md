@@ -1,6 +1,8 @@
 # KMV2013
 This project aims to provide a visual representation of the 2013 municipal election in Denmark
 
+![Demo Image](Web/demo.png)
+
 ## Data collection and processing
 The raw data was scraped from http://www.kmdvalg.dk/kv/2013/ using the project located in [Scraping](Scraping/) using BeautifulSoup, and can be found in [data/raw/](data/raw/).
 The processing of this data more or less just involves cutting out all the information that isn't relevant to the site, and compressing it into arrays instead of dictionaries to avoid keys bloating the data that has to be downloaded by the end user. The processed election data ends up in [data/election/](data/election/) and is split into [municipalities.json](data/election/municipalities.json) and [locations.json](data/election/locations.json) respectively.
