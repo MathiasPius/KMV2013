@@ -1,7 +1,7 @@
 # KMV2013
 This project aims to provide a visual representation of the 2013 municipal election in Denmark
 
-# Data collection and processing
+## Data collection and processing
 The raw data was scraped from http://www.kmdvalg.dk/kv/2013/ using the project located in [Scraping](Scraping/) using BeautifulSoup, and can be found in [data/raw/](data/raw/).
 The processing of this data more or less just involves cutting out all the information that isn't relevant to the site, and compressing it into arrays instead of dictionaries to avoid keys bloating the data that has to be downloaded by the end user. The processed election data ends up in [data/election/](data/election/) and is split into [municipalities.json](data/election/municipalities.json) and [locations.json](data/election/locations.json) respectively.
 
@@ -11,5 +11,9 @@ The location data for the individual voting locations was gathered using the add
 
 Finally the data from all of this is compiled into a single [data.js](Web/data.js) file, by basically concatenating the final data files from the other processing steps, and making it into valid js so it can be loaded as such.
 
-# Visualization
+## Visualization
 For visualization I'm using www.http://leafletjs.com for the map itself, http://thunderforest.com/ for the tile layers, as mentioned, the boundary data is originally from https://wambachers-osm.website/boundaries/, and for the pie charts on the website, I'm using http://www.chartjs.org/
+
+
+## Live demo
+The website is currently live at https://kmv2013.pius.io/
