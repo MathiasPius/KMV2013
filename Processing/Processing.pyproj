@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>ff017af5-8342-465c-87b0-ef837f888a38</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>ExtractBoundaries.py</StartupFile>
+    <StartupFile>LocationPolygons.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>

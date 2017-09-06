@@ -22,41 +22,53 @@
 
 <body>
     <div id="container">
-        <div id="info-display">
-            <h2 id="info-municipality-name"></h2>
-            <hr />
-            <div>
-                <div class="info-pie-chart-container">
-                    <h4>Valgdeltagelse</h4>
-                    <div><canvas class="info-pie-chart" id="info-election-participation"></canvas></div>
+        <div id="display-container">
+            <div id="info-display">
+                <h2 id="info-municipality-name"></h2>
+                <hr />
+                <div>
+                    <div class="info-pie-chart-container">
+                        <h4>Valgdeltagelse</h4>
+                        <div><canvas class="info-pie-chart" id="info-election-participation"></canvas></div>
+                    </div>
+                    <div class="info-pie-chart-container">
+                        <h4>Stemmefordeling</h4>
+                        <div><canvas class="info-pie-chart" id="info-vote-distribution"></canvas></div>
+                    </div>
                 </div>
-                <div class="info-pie-chart-container">
-                    <h4>Stemmefordeling</h4>
-                    <div><canvas class="info-pie-chart" id="info-vote-distribution"></canvas></div>
+                <hr />
+                <div>
+                    <h3>Kandidater</h3>
+                    <table id="info-candidate-table" class="table">
+                        <thead id="info-candidate-header">
+                            <tr>
+                                <td style="width: 30px;"></td>
+                                <td><strong>Navn</strong></td>
+                                <td><strong>Stemmer</strong></td>
+                                <td><strong>Andel</strong></td>
+                            </tr>
+                        </thead>
+                        <tbody id="info-candidate-data">
+                            <!--- Data goes here -->
+                        </tbody>
+                    </table>
                 </div>
-            </div>
-            <hr />
-            <div>
-                <h3>Kandidater</h3>
-                <table id="info-candidate-table" class="table">
-                    <thead id="info-candidate-header">
-                        <tr>
-                            <td style="width: 30px;"></td>
-                            <td><strong>Navn</strong></td>
-                            <td><strong>Stemmer</strong></td>
-                            <td><strong>Andel</strong></td>
-                        </tr>
-                    </thead>
-                    <tbody id="info-candidate-data">
-                        <!--- Data goes here -->
-                    </tbody>
-                </table>
             </div>
         </div>
-        <div id="map"></div>
+        <div id="map-container">
+            <div id="map"></div>
+        </div>
     </div>
 
     <script>
+
+        var map;
+        var geoMunicipality;
+        var geoLocation;
+        var activeMunicipality;
+        var activeLocation;
+        var activeMarkers;
+
         var partyColors = {
             Ø: "rgba(208, 0, 77, 0.8)",
             I: "rgba(27, 36, 65, 0.8)",
@@ -73,13 +85,25 @@
             return document.getElementById(id);
         }
 
-        function hideDisplay(e) {
-            // If a municipality was clicked, .handled will be true
-            // so we ignore it
+        function changeDisplay(e) {
+            // If a different municipality was clicked, 
+            // .handled will be true so we ignore it
             if (e.originalEvent.handled) { return; }
+            console.log("Deselected All");
+
+            if (activeMarkers) {
+                map.removeLayer(activeMarkers);
+            }
+
+            if (activeMunicipality) {
+                geoMunicipality.resetStyle(activeMunicipality);
+                activeMunicipality = null
+            }
             
             $("info-display").style.width = "0px";
-            $("info-display").style.visibility = "hidden";
+            $("info-display").style.display = "none";
+
+            setTimeout(function () { map.invalidateSize() }, 100);
         }
 
         function makePieChart(canvas, data) {
@@ -108,6 +132,7 @@
                     labels: dataset.labels
                 },
                 options: {
+                    animation: false,
                     legend: {
                         display: false
                     }
@@ -115,16 +140,13 @@
             });
         }
 
+
         var participationChart;
         var distributionChart;
-        function selectMunicipality(e) {
-            //console.log("Selected " + e.target.feature.properties.name);
-            var mId = e.target.feature.properties.name;
-            var data = electiondata_municipalities[mId];
-
-            console.log(data);
-            $("info-municipality-name").innerText = mId;
-
+        function displayData(data)
+        {
+            // The header
+            $("info-municipality-name").innerText = data[0];
 
             // Build election piecharts
             var participation = [
@@ -191,7 +213,80 @@
 
             // Extend the menu if it isn't already
             $("info-display").style.width = "450px";
-            $("info-display").style.visibility = "visible";
+            $("info-display").style.display = "block";
+        }
+
+        function selectLocation(e) {
+            console.log("Selected Location " + e.target.feature.properties.name);
+
+            var lId = e.target.feature.properties.name;
+            var data = electiondata_locations[lId];
+
+            if (activeLocation) {
+                activeMarkers.resetStyle(activeLocation);
+                activeLocation = null
+            }
+
+            activeLocation = e.target;
+            activeLocation.setStyle({
+                fillColor: "rgba(150, 138, 160, 0.8)",
+                weight: 30
+            });
+
+            displayData(data);
+
+            e.originalEvent.handled = true;
+        }
+
+        function selectMunicipality(e) {
+            console.log("Selected Municipality " + e.target.feature.properties.name);
+            var mId = e.target.feature.properties.name;
+            var data = electiondata_municipalities[mId];
+
+            // Toggle the colors on the active object
+            if (activeMunicipality) {
+                geoMunicipality.resetStyle(activeMunicipality);
+            }
+
+            activeMunicipality = e.target;
+            activeMunicipality.setStyle({
+                fillColor: "rgba(1, 138, 60, 0.6)"
+            });
+
+            // Load the markers for the individual voting locations of this municipality
+            if (activeMarkers) {
+                map.removeLayer(activeMarkers);
+            }
+
+            var geojsonMarkerOptions = {
+                className: "feature",
+                radius: 200,
+                fillColor: "rgba(0, 255, 0, 0.8)",
+                color: "rgba(0, 0, 255, 0.6)"
+            };
+
+            var markers = geometry_locations[mId];
+            activeMarkers = L.geoJSON(markers, {
+                onEachFeature: function (feature, layer) {
+                    layer.on({
+                        click: selectLocation
+                    })
+                },
+                pointToLayer: function (feature, latlng) {
+                    return L.circle(latlng, geojsonMarkerOptions);
+                }
+            }).addTo(map);
+
+
+            displayData(data);
+
+
+            // Let the map adjust to the (possibly) new info-display
+            // Then zoom to target
+            setTimeout(function () {
+                map.invalidateSize()
+                map.fitBounds(e.target.getBounds())
+            }, 100);
 
             // Set .handled to true to prevent us from acting on the event later
             e.originalEvent.handled = true;
@@ -203,7 +298,7 @@
                 new L.LatLng(60.882655, 22.479440)
             )
 
-            var map = L.map('map', {
+            map = L.map('map', {
                 center: bounds.getCenter(),
                 zoom: 7,
                 minZoom: 7,
@@ -211,22 +306,30 @@
                 maxBoundsViscosity: 0.01
             });
 
+            info = L.control();
+
             L.tileLayer('http://{s}.tile.thunderforest.com/neighbourhood/{z}/{x}/{y}.png?apikey={apikey}', {
                 attribution: '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
                 apikey: '9c66b81c1cea4675ac7708ad71498ba9',
                 maxZoom: 22
             }).addTo(map);
 
-            map.on({click: hideDisplay })
+            map.on({click: changeDisplay })
 
-            L.geoJSON(geometry_municipalities, {
-
-                className: "municipality-feature",
+            geoMunicipality = L.geoJSON(geometry_municipalities, {
+                className: "feature",
 
                 onEachFeature: function (feature, layer) {
                     layer.on({
                         click: selectMunicipality
                     })
+                },
+
+                style: function (feature)
+                {
+                    return {
+                        fillColor: "rgba(1, 138, 60, 0.001)"
+                    };
                 }
             }).addTo(map);
         }

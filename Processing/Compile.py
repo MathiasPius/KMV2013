@@ -11,7 +11,7 @@ def read_data(filename):
 
 def compile_data():
     datamap = [
-        ["voronois/locations.json", "geometry_locations"],
+        ["locations/locations.json", "geometry_locations"],
         ["boundaries/all_boundaries.json", "geometry_municipalities"],
         ["election/locations.json", "electiondata_locations"],
         ["election/municipalities.json", "electiondata_municipalities"]
