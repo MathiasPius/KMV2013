@@ -14,7 +14,7 @@ The location data for the individual voting locations was gathered using the add
 Finally the data from all of this is compiled into a single [data.js](Web/data.js) file, by basically concatenating the final data files from the other processing steps, and making it into valid js so it can be loaded as such.
 
 ## Visualization
-For visualization I'm using www.http://leafletjs.com for the map itself, http://thunderforest.com/ for the tile layers, as mentioned, the boundary data is originally from https://wambachers-osm.website/boundaries/, and for the pie charts on the website, I'm using http://www.chartjs.org/
+For visualization I'm using http://leafletjs.com for the map itself, http://thunderforest.com/ for the tile layers, as mentioned, the boundary data is originally from https://wambachers-osm.website/boundaries/, and for the pie charts on the website, I'm using http://www.chartjs.org/
 
 
 ## Live demo
