@@ -4,7 +4,7 @@ This project aims to provide a visual representation of the 2013 municipal elect
 ![Demo Image](Web/demo.png)
 
 ## Data collection and processing
-The raw data was scraped from http://www.kmdvalg.dk/kv/2013/ using the project located in [Scraping](Scraping/) using BeautifulSoup, and can be found in [data/raw/](data/raw/).
+The raw data was scraped from http://www.kmdvalg.dk/kv/2013/ [1] using the project located in [Scraping](Scraping/) using BeautifulSoup, and can be found in [data/raw/](data/raw/).
 The processing of this data more or less just involves cutting out all the information that isn't relevant to the site, and compressing it into arrays instead of dictionaries to avoid keys bloating the data that has to be downloaded by the end user. The processed election data ends up in [data/election/](data/election/) and is split into [municipalities.json](data/election/municipalities.json) and [locations.json](data/election/locations.json) respectively.
 
 GeoJson data for the boundaries of the danish municipalities were downloaded from https://wambachers-osm.website/boundaries/ and can be found in [data/boundaries-raw](data/boundaries-raw). The GeoJson boundary data is simplified using Python and the shapely library.
@@ -18,4 +18,6 @@ For visualization I'm using http://leafletjs.com for the map itself, http://thun
 
 
 ## Live demo
-The website is currently live at https://kmv2013.pius.io/
+The website is ~~currently live at https://kmv2013.pius.io/~~ no longer live.
+
+[1] At the time, the linked site had no visualization and was just a VERY basic table-based representation of data. Just prior to the municipal election of 2017, the page was updated with its current (as of January 19th 2019) look, which also made this whole project, and my intention to re-release it with the updated data from the newest election, completely superfluous.
